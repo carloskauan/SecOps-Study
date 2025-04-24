@@ -41,4 +41,4 @@ root@kali# ifconfig
 ### Atribuir numero IP via DHCP
 ~~~
 root@kali# dhclient eth0
-~~
+~~~
