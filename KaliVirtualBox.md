@@ -56,3 +56,19 @@ root@kali# ifconfig
 ```bash
 root@kali# dhclient eth0
 ```
+
+# Atualização de pacotes e sistema
+
+### Atualizar repositorio de programas
+```bash
+root@kali# /etc/init.d/networking start
+```
+### Atualizar programas instalados
+```bash
+root@kali# /etc/init.d/networking start
+```
+### Atualizar sistema operacional
+```bash
+root@kali# /etc/init.d/networking start
+```
+
