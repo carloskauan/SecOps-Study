@@ -1,50 +1,59 @@
-# DHCP
+# 📡 DHCP – Dynamic Host Configuration Protocol
 
-**DHCP** (Dynamic Host Configuration Protocol) é um protocolo da **camada de aplicação** do modelo OSI (7ª camada), usado para **atribuir dinamicamente informações de configuração de rede** a dispositivos (hosts) que se conectam à rede.
+**DHCP** é um protocolo da **camada de aplicação** (7ª camada do modelo OSI), usado para **atribuir automaticamente configurações de rede** aos dispositivos que se conectam a uma rede.
 
-Em vez de configurar manualmente IPs, gateways, servidores DNS e outros parâmetros, o DHCP faz isso **automaticamente**, reduzindo erros e facilitando a administração da rede.
-
----
-
-## Estrutura e Arquitetura
-
-### Componentes Principais
-
-1. **Cliente DHCP**  
-   Dispositivo que precisa de configuração de rede, como computadores, máquinas virtuais, smartphones etc.
-
-2. **Servidor DHCP**  
-   Dispositivo responsável por fornecer as configurações, como um roteador, switch de camada 3 ou servidor dedicado.
-
-3. **Agente de Transmissão (Relay)**  
-   Utilizado em redes grandes para encaminhar mensagens DHCP entre sub-redes.
+💡 Em vez de configurar manualmente endereços IP, gateway, DNS e outros parâmetros, o DHCP **automatiza esse processo**, facilitando a administração e reduzindo erros.
 
 ---
 
-## Ciclo DORA
+## 🧱 Estrutura e Arquitetura
 
-O processo DHCP envolve a troca de mensagens entre cliente e servidor, seguindo uma sequência de 4 etapas conhecida como **DORA**:
+### 🔧 Componentes Principais
 
-1. **Discover**  
-   O cliente envia uma mensagem de broadcast (`DHCPDISCOVER`) procurando servidores DHCP.  
-   > Como ainda não tem IP, a mensagem é enviada para todos na rede: `255.255.255.255`.
+- **Cliente DHCP**  
+  Dispositivo que solicita configurações de rede (PCs, notebooks, celulares, VMs, etc.)
 
-2. **Offer**  
-   Um ou mais servidores DHCP respondem com uma oferta (`DHCPOFFER`) contendo:
-   - Um IP sugerido  
-   - Máscara de sub-rede  
-   - Gateway padrão  
-   - Servidor DNS  
-   - Tempo de concessão (lease time)
+- **Servidor DHCP**  
+  Responsável por fornecer os parâmetros de rede (pode ser um roteador, switch de camada 3 ou servidor dedicado).
 
-3. **Request**  
-   O cliente envia uma mensagem (`DHCPREQUEST`) aceitando a oferta recebida.  
-   > Essa mensagem também pode ser usada para renovar um IP já atribuído.
-
-4. **Acknowledge**  
-   O servidor confirma a concessão do IP com uma mensagem (`DHCPACK`).  
-   > A partir desse ponto, o cliente pode utilizar o IP atribuído.
+- **Agente de Transmissão (Relay)**  
+  Encaminha mensagens DHCP entre sub-redes, muito útil em redes de grande porte.
 
 ---
 
-> ✅ **Resumo:** O DHCP é essencial para automatizar a configuração de rede, melhorar a escalabilidade e reduzir erros operacionais em ambientes de rede, tanto domésticos quanto corporativos.
+## 🔄 Ciclo DORA – Processo de Alocação
+
+O processo de atribuição dinâmica de IP segue 4 etapas, conhecidas pelo acrônimo **DORA**:
+
+### 1. 📢 Discover
+O cliente envia uma mensagem **`DHCPDISCOVER`** em broadcast para localizar servidores DHCP.  
+> Como ainda não possui IP, o pacote vai para `255.255.255.255`.
+
+### 2. 🎁 Offer
+Um ou mais servidores respondem com **`DHCPOFFER`**, oferecendo:
+- Endereço IP sugerido
+- Máscara de sub-rede
+- Gateway padrão
+- Servidores DNS
+- Tempo de concessão (lease time)
+
+### 3. 📩 Request
+O cliente envia um **`DHCPREQUEST`** aceitando uma das ofertas.  
+> Também pode ser usado para renovar um IP já em uso.
+
+### 4. ✅ Acknowledge
+O servidor envia **`DHCPACK`** confirmando a concessão do IP.  
+> A partir daí, o cliente pode usar o endereço atribuído.
+
+---
+
+## 📌 Resumo
+
+✅ O DHCP é um **componente fundamental** para:
+
+- Automatizar configurações de rede
+- Melhorar a escalabilidade
+- Reduzir erros operacionais
+- Simplificar a administração de redes domésticas e corporativas
+
+---
