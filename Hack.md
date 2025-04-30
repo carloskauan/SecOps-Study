@@ -62,9 +62,3 @@ Para realizar uma busca no Kali Linux, utilize o seguinte comando:
 ```bash
 root@kali# whois www.site.com.br
 ```
-
-```bash
-root@kali# whois www.microsoft.com.br
-```
-
-Essa busca irá retornar informações públicas registradas sobre o domínio, como emails de contato e servidores DNS.
