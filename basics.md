@@ -63,3 +63,5 @@ O servidor envia **`DHCPACK`** confirmando a concessão do IP.
 | 001           | REF-A001   | Caneta Azul           | 10         | 2,50                 | 25,00       |
 | 002           | REF-B002   | Caderno Universitário | 5          | 15,00                | 75,00       |
 | 003           | REF-C003   | Mochila Escolar       | 2          | 120,00               | 240,00      |
+
+Dns é um serviço responsavel por traduzir nomes em indereços IP(e virse versa) de um determiando
