@@ -1,69 +1,3 @@
-# 📡 DHCP – Dynamic Host Configuration Protocol
-
-**DHCP** é um protocolo da **camada de aplicação** (7ª camada do modelo OSI), usado para **atribuir automaticamente configurações de rede** aos dispositivos que se conectam a uma rede.
-
-💡 Em vez de configurar manualmente endereços IP, gateway, DNS e outros parâmetros, o DHCP **automatiza esse processo**, facilitando a administração e reduzindo erros.
-
----
-
-## 🧱 Estrutura e Arquitetura
-
-### 🔧 Componentes Principais
-
-- **Cliente DHCP**  
-  Dispositivo que solicita configurações de rede (PCs, notebooks, celulares, VMs, etc.)
-
-- **Servidor DHCP**  
-  Responsável por fornecer os parâmetros de rede (pode ser um roteador, switch de camada 3 ou servidor dedicado).
-
-- **Agente de Transmissão (Relay)**  
-  Encaminha mensagens DHCP entre sub-redes, muito útil em redes de grande porte.
-
----
-
-## 🔄 Ciclo DORA – Processo de Alocação
-
-O processo de atribuição dinâmica de IP segue 4 etapas, conhecidas pelo acrônimo **DORA**:
-
-### 1. 📢 Discover
-O cliente envia uma mensagem **`DHCPDISCOVER`** em broadcast para localizar servidores DHCP.  
-> Como ainda não possui IP, o pacote vai para `255.255.255.255`.
-
-### 2. 🎁 Offer
-Um ou mais servidores respondem com **`DHCPOFFER`**, oferecendo:
-- Endereço IP sugerido
-- Máscara de sub-rede
-- Gateway padrão
-- Servidores DNS
-- Tempo de concessão (lease time)
-
-### 3. 📩 Request
-O cliente envia um **`DHCPREQUEST`** aceitando uma das ofertas.  
-> Também pode ser usado para renovar um IP já em uso.
-
-### 4. ✅ Acknowledge
-O servidor envia **`DHCPACK`** confirmando a concessão do IP.  
-> A partir daí, o cliente pode usar o endereço atribuído.
-
----
-
-## 📌 Resumo
-
-✅ O DHCP é um **componente fundamental** para:
-
-- Automatizar configurações de rede
-- Melhorar a escalabilidade
-- Reduzir erros operacionais
-- Simplificar a administração de redes domésticas e corporativas
-
----
-
-| ID do Produto | Referência | Descrição             | Quantidade | Valor Unitário (R\$) | Total (R\$) |
-| ------------- | ---------- | --------------------- | ---------- | -------------------- | ----------- |
-| 001           | REF-A001   | Caneta Azul           | 10         | 2,50                 | 25,00       |
-| 002           | REF-B002   | Caderno Universitário | 5          | 15,00                | 75,00       |
-| 003           | REF-C003   | Mochila Escolar       | 2          | 120,00               | 240,00      |
-
 # 🌐 DNS (Domain Name System)
 
 O **DNS** é o serviço responsável por **traduzir nomes de domínios em endereços IP** (e vice-versa).  
@@ -148,3 +82,105 @@ As informações dos servidores DNS ficam armazenadas em **registros**, que defi
 ---
 
 🔚 **Resumo:** O DNS é uma peça fundamental da internet, responsável por permitir que possamos acessar sites usando nomes amigáveis em vez de números difíceis de memorizar. 🚀
+
+
+## 📑 Tipos de Registro DNS
+
+O servidor DNS responde a solicitações graças aos **registros DNS**.  
+Saber identificar os principais tipos de registros é fundamental para entender o funcionamento e comportamento durante testes.
+
+---
+
+### 📌 Principais Tipos de Registros DNS
+
+#### 🧭 NS (Name Server)
+Identifica os **servidores DNS primário e secundário** responsáveis por um domínio.
+
+📘 **Exemplo:**
+```dns
+kali.com.br. IN NS nameserver1.kali.com.br
+```
+
+---
+
+#### 🅰️ A – Endereço de Host (IPv4)
+Associa **nomes DNS com endereços IPv4**.
+
+📘 **Exemplos:**
+```dns
+kali.com. IN A 127.0.0.1
+kali.com.br. IN A 192.168.1.2
+kali2.com.br. IN A 192.168.1.3
+```
+
+---
+
+#### 🧾 AAAA – Endereço de Host (IPv6)
+Associa **nomes DNS com endereços IPv6**.
+
+📘 **Exemplo:**
+```dns
+ipv6_host1.kali.com. IN AAAA 4321:0:1:2:3:4:567:89ab
+```
+
+---
+
+#### 🔁 CNAME (Canonical Name)
+Mapeia um **alias (apelido)** de um servidor DNS para outro.  
+Permite que múltiplos nomes apontem para o mesmo IP.
+
+📘 **Exemplos:**
+```dns
+www.servidor.com.br. CNAME servidor.com.br.
+ftp.servidor.com.br. CNAME servidor.com.br.
+smtp.servidor.com.br. CNAME servidor.com.br.
+```
+
+---
+
+#### 🖥️ HINFO (Host Information)
+Armazena **informações sobre o host**, como CPU, sistema operacional, etc.
+
+📘 **Exemplo:**
+```dns
+kali.com.br. HINFO INTEL-386 LINUX
+```
+
+---
+
+#### ✉️ MX (Mail Exchanger)
+Armazena **informações de servidores de e-mail**, incluindo prioridade.
+
+📘 **Exemplos:**
+```dns
+kali.com.br. MX 5 mail1.kali.com.br
+kali.com.br. MX 10 mail2.kali.com.br
+```
+
+🔔 **Nota:** quanto menor o número, **maior a prioridade**.
+
+---
+
+#### 🔄 PTR (Pointer)
+Utilizado para criar **zonas reversas**, mapeando um IP para um nome DNS.  
+É o inverso do registro tipo A.
+
+📘 **Exemplo:**
+```dns
+1.168.192.in-addr.arpa. PTR host.kali.com.br.
+```
+
+---
+
+#### 🧷 SOA (Start of Authority)
+Define as **características de uma zona**, incluindo servidor principal, e-mail do responsável, TTLs e número de série.
+
+📘 **Exemplo:**
+```dns
+@ IN SOA nameserver.kali.com.br. postmaster.kali.com.br. (
+    1      ; serial number
+    3600   ; refresh [1h]
+    600    ; retry [10m]
+    86400  ; expire [1d]
+    3600 ) ; min TTL [1h]
+```
