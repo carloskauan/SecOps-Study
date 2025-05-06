@@ -70,17 +70,6 @@ Essa hierarquia funciona como uma **árvore**, indo do mais geral ao mais espec�
 
 ---
 
-## 🧾 Registros DNS
-
-As informações dos servidores DNS ficam armazenadas em **registros**, que definem tipos específicos de dados associados a um nome DNS.
-
-| 🏷️ Tipo de Registro | 📖 Função                                             |
-|----------------------|------------------------------------------------------|
-| 🅰️ A                | Associa o nome DNS a um endereço IP.                 |
-| 🧮 HINFO            | Associa o nome DNS a informações de hardware.        |
-
----
-
 🔚 **Resumo:** O DNS é uma peça fundamental da internet, responsável por permitir que possamos acessar sites usando nomes amigáveis em vez de números difíceis de memorizar. 🚀
 
 
