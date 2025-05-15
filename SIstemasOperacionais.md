@@ -1,3 +1,25 @@
+# 📑 Sumário
+
+- [📘 O que é um Sistema Operacional?](#-o-que-é-um-sistema-operacional)
+- [⚙️ Principais Funções de um Sistema Operacional](#-principais-funções-de-um-sistema-operacional)
+  - [🧠 Gerenciamento de Processos](#-gerenciamento-de-processos)
+  - [💾 Gerenciamento de Memória](#-gerenciamento-de-memória)
+  - [🖥️ Gerenciamento de Entrada/Saída (I/O)](#-gerenciamento-de-entradasaída-io)
+  - [📁 Gerenciamento de Arquivos](#-gerenciamento-de-arquivos)
+  - [🔐 Segurança e Proteção](#-segurança-e-proteção)
+  - [🌐 Gerenciamento de Redes](#-gerenciamento-de-redes)
+- [🧱 Estrutura Geral de um Sistema Operacional](#-estrutura-geral-de-um-sistema-operacional)
+  - [🔌 Camadas Principais](#-camadas-principais)
+- [🛠️ Chamada de Sistema (System Calls)](#️-chamada-de-sistema-system-calls)
+- [🔐 Importância para a Cibersegurança](#-importância-para-a-cibersegurança)
+- [🧩 Tipos de Sistemas Operacionais](#-tipos-de-sistemas-operacionais)
+  - [🧱 Sistemas Monolíticos](#-sistemas-monolíticos)
+  - [🔬 Sistemas Microkernel](#-sistemas-microkernel)
+  - [⚖️ Sistemas Híbridos](#-sistemas-híbridos)
+  - [⏱️ Sistemas de Tempo Real (RTOS)](#️-sistemas-de-tempo-real-rtos)
+  - [🌐 Sistemas Distribuídos](#-sistemas-distribuídos)
+  - [☁️ Sistemas Virtualizados e em Nuvem](#️-sistemas-virtualizados-e-em-nuvem)
+
 # 📘 O que é um Sistema Operacional?
 
 Um **Sistema Operacional (SO)** é um software essencial que coordena e gerencia o uso do hardware por parte dos programas e dos usuários.  
