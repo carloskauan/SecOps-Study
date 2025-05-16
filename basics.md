@@ -1,3 +1,23 @@
+# 📑 Sumário
+
+- [🌐 DNS (Domain Name System)](#-dns-domain-name-system)
+- [🧭 Estrutura Hierárquica dos Domínios](#-estrutura-hierárquica-dos-domínios)
+- [📡 Exemplo de Interação com o Servidor DNS](#-exemplo-de-interação-com-o-servidor-dns)
+- [🛠️ Tipos de Servidores DNS](#️-tipos-de-servidores-dns)
+  - [🧠 Somente Cache](#-somente-cache)
+  - [📘 Servidor Mestre (Primário)](#-servidor-mestre-primário)
+  - [📙 Servidor Escravo (Secundário)](#-servidor-escravo-secundário)
+- [📑 Tipos de Registro DNS](#-tipos-de-registro-dns)
+  - [🧭 NS (Name Server)](#-ns-name-server)
+  - [🅰️ A – Endereço de Host (IPv4)](#️-a--endereço-de-host-ipv4)
+  - [🧾 AAAA – Endereço de Host (IPv6)](#-aaaa--endereço-de-host-ipv6)
+  - [🔁 CNAME (Canonical Name)](#-cname-canonical-name)
+  - [🖥️ HINFO (Host Information)](#-hinfo-host-information)
+  - [✉️ MX (Mail Exchanger)](#️-mx-mail-exchanger)
+  - [🔄 PTR (Pointer)](#-ptr-pointer)
+  - [🧷 SOA (Start of Authority)](#-soa-start-of-authority)
+
+
 # 🌐 DNS (Domain Name System)
 
 O **DNS** é o serviço responsável por **traduzir nomes de domínios em endereços IP** (e vice-versa).  
