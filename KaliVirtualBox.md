@@ -1,3 +1,23 @@
+# 📑 Sumário
+
+- [⚙️ Configurando o Redo no Kali Linux no VirtualBox](#️-configurando-o-redo-no-kali-linux-no-virtualbox)
+  - [🌐 Modo de Rede no VirtualBox](#-modo-de-rede-no-virtualbox)
+    - [🔄 Solução: Usar o Modo Bridged Adapter](#-solução-usar-o-modo-bridged-adapter)
+    - [👁️ Modo Promíscuo](#️-modo-promíscuo)
+  - [🛠️ Como Configurar no VirtualBox](#️-como-configurar-no-virtualbox)
+
+- [💻 Terminais de Comando no Kali Linux](#-terminais-de-comando-no-kali-linux)
+  - [🔌 Iniciar serviços de rede](#-iniciar-serviços-de-rede)
+  - [⛔ Interromper serviços de rede](#-interromper-serviços-de-rede)
+  - [📡 Verificar IP atual](#-verificar-ip-atual)
+  - [📥 Atribuir IP automaticamente via DHCP](#-atribuir-ip-automaticamente-via-dhcp)
+
+- [⬆️ Atualização de pacotes e sistema](#️-atualização-de-pacotes-e-sistema)
+  - [📦 Atualizar repositório de programas](#-atualizar-repositorio-de-programas)
+  - [🔧 Atualizar programas instalados](#-atualizar-programas-instalados)
+  - [🖥️ Atualizar sistema operacional](#-atualizar-sistema-operacional)
+
+
 # Configurando o Redo no Kali Linux no VirtualBox
 
 > ⚠️ **Observação:**  
