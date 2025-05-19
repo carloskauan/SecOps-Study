@@ -236,3 +236,40 @@ A **memória principal (RAM)** é onde os dados e os programas ficam armazenados
   - **Cache**: Uma camada de memória estática (SRAM) de alta velocidade localizada entre a CPU e a memória RAM. Ela armazena cópias de dados e instruções que foram acessados recentemente ou que são frequentemente usados, para reduzir o tempo de acesso da CPU à memória. Existem múltiplos níveis de cache (L1, L2, L3) com diferentes tamanhos e velocidades.
   - **Memória RAM (Random Access Memory)**: A memória principal do computador, onde os programas em execução e os dados que eles utilizam são armazenados. Ela permite o acesso aleatório a qualquer endereço de memória com tempos de acesso relativamente consistentes. A RAM é volátil, o que significa que seu conteúdo é perdido quando a energia é desligada.
   - **Memória Virtual**: Uma técnica de gerenciamento de memória que permite ao sistema operacional utilizar espaço no disco rígido (HD ou SSD) como uma extensão da memória RAM. Quando a RAM física está cheia, o sistema operacional pode mover temporariamente páginas de memória inativas para o disco (swap out) e trazê-las de volta para a RAM quando necessário (swap in). A memória virtual permite executar mais programas do que caberiam na RAM física, mas o acesso é muito mais lento.
+
+# Processos e Threads
+
+## Como funcionam os processos
+
+Um processo é uma instancia de um programa em execução. Ele não é so o codigo dp programa -  Ele tbm inclui recursos de memoria, como:
+
+.Text Segment: Conteudo do codigo executavel do programa.
+.Data Segment: Armazena variveis globais e estaticas.
+.Stack(PIlha): Onde são armazenados chamadas de funções e variaveis locais. Cresce ou diminui conforme as funções são chamadas e encerradas.
+.Heap: Usado para alocação dinamica de memoria em tempo de execução (ex: malloc em c).
+
+### Gerenciamento de processos
+
+O sistema operacional usa o esclaonador de CPU para decidir qual processo será executado. Isso é feito com algoritimos de escalonamento, como:
+
+.Round Robin: Onde cada processo e executado de forma circular.
+.Prioridade: Executa processos com maior prioridade.
+.FIFO(Firts in, firts out): Executa processos na ordem em que chegam.
+
+## Processos VS. Threads
+
+### Processo
+.É uma instancia em execução de um programa
+.Cada processo possui:
+    Sua propria area da memoria(codigo, docs, pilha, heap)
+    Seus recursos próprios(descritores de arquivos, vareiaveis, registradores, etc...).
+    É inependente de outros processos.
+.A comunicação entre processos diferentes (chamada IPC - Inter-Process Communication) é mais complexa e custosa( ex: pipes, sockets, filas de mensagem)
+.Ex: Abrir dois navegadores diferentes (FireFox e Chrome) cria dois processos distintos, com suas proprias memorias.
+
+### Threads
+
+.Uma thread(tambem chamada de linha de execução) é a menor unidade de execução dentro de um processo.
+.Um processo pode ter uma ou varias Threads.
+.Todas as threads de um mesmo processo compartilham a mesma  memoria(codigo, dados, heap), mas cada uma tem sua propria pilha e registradores.
+.Ex: Em um navegador (unico processo), uma thread pode cuidar da interface grafica, e outra do carregamento da pagina e outra da execução de scripts
