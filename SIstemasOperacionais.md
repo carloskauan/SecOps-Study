@@ -273,3 +273,15 @@ O sistema operacional usa o esclaonador de CPU para decidir qual processo será 
 .Um processo pode ter uma ou varias Threads.
 .Todas as threads de um mesmo processo compartilham a mesma  memoria(codigo, dados, heap), mas cada uma tem sua propria pilha e registradores.
 .Ex: Em um navegador (unico processo), uma thread pode cuidar da interface grafica, e outra do carregamento da pagina e outra da execução de scripts
+
+## Escalonamento de privilegios e segruança
+
+### O que é escalonamento de segruança?
+
+É quando um processo ou usuario com poucos privilegios ganha acesso não autorizado a permissões mais elevadas (como root/admin)
+
+### Tipos
+.Escalonamento Vertical: Usuario comum obtém privilegios de adminstrador.
+.Escalonamento Horizontal: Um usuario acessa a conta ou recurso de um outro com nivel semelhante
+
+### Como ocorrem?
