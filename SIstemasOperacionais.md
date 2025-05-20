@@ -285,3 +285,28 @@ O sistema operacional usa o esclaonador de CPU para decidir qual processo será 
 .Escalonamento Horizontal: Um usuario acessa a conta ou recurso de um outro com nivel semelhante
 
 ### Como ocorrem?
+
+.Vulnerabilidades de Kernel: Ex: Dirty COW(linux) permitia sobrescrever arquivos de leitura.
+.Arquivos SUID mal configurados: Executaveis que rodam com permissões de root.
+.Serviços mal configurados: Servidores que permitem comoandos como root por falha de segurança
+.EX: O comando <code>find / -perm -4000 2>/dev/null<\code> pode ser usado para encotrar arquivos SUID no linux que podem ser explorados para obter permissões elevadas.
+
+## Gerenciamento de memoria
+
+### Organização da memoria
+
+A memoria  é dividida em segmentos para melhor controle e proteção:
+| Segmento                  | Função                                            |
+| ------------------------- | ------------------------------------------------- |
+| **Stack**                 | Guarda chamadas de função e variáveis locais      |
+| **Heap**                  | Guarda dados dinâmicos criados durante a execução |
+| **Código (Text Segment)** | Contém as instruções do programa                  |
+| **Dados (Data Segment)**  | Contém variáveis globais e constantes             |
+
+Cada processo tem sua propria memoria, evitando que um programa acesse a memoria do outro, isso é fundamental para segurança e estabilidade do sistema.
+
+### Ataques de buffer overflow
+
+#### O que é Buffer Overflow?
+
+É quando um programa escreve mais dados que o espaço
