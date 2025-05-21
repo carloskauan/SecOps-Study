@@ -430,3 +430,33 @@ ssh -i ~/.ssh/minha_chave.pem usuario@servidor.exemplo.com
     ```c
     nmap -sV --script=vuln 192.168.1.1
     ```
+
+## Segurança em redes e sistemas Distribuidos
+
+### Modelo OSI (7 CAMADAS)
+
+1 -Fisica: Transmissão de bits
+2 -Enlace:Quadros, ethernet, MAC
+3 -Rede:Roteamento, IP, ICMP
+4 -Transporte:TCP/UP
+5 -Sessão:Controle dialogo
+6 -Apresentação:Criptografia, compressão
+7 -Aplicação:HTTP, STP, DNS
+| Compreender o OSI ajuda a isolar problemas e aplicar proteção(firewalls, IDS/IPS) no nivel certo.
+
+### Ameaças e controles
+
+.Sniffing: Capturar pacotes -> Usar TLS/SSL
+.Man-In-The-Middle(MitM): Interceptar e modificar dados -> Usar certificados digitais.
+.DDoS: Sobrecarregar recursos -> usar CDN, rate-limiting, firewalls
+
+## Virtualização E Computação em nuvem
+
+#### Tipos de Hypervisor
+.Bare Metal: Roda direto no hardware(VMware ESXI, Xen,Hyper-V).
+.Hosted: Roda sobre um SO host (VirtualBox, VMware Workstation)
+
+#### Riscos e boas praticas.
+.Escape de VM: evite compartilhamento indevido de dispositivos.
+.Ataque ao Hypervisor: Manter patches e restringir acesso de administração.
+.Isolamento e Segmentação: Usar vlans, firewalls internos e póliticas de rede para separar VMs
