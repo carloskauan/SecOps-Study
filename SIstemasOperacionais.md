@@ -309,4 +309,40 @@ Cada processo tem sua propria memoria, evitando que um programa acesse a memoria
 
 #### O que é Buffer Overflow?
 
-É quando um programa escreve mais dados que o espaço
+O buffer overflow acontece quando um programa copia mais dados para o buffer(área de momoria contingua) do que ele pode armazenar. Esse excesso "vaza" para regiões adjacenetes da memoria e pode corromper dados, desviar o fluxo de execução e, em casos extremos, permitir que o invasor execute código arbitrario com privilegios da aplicação.
+
+##### Como funciona, na pratica
+
+1 - Entrada com tamanho inesperado
+    A função espera, por exemplo, uma string de até 10 bytes, mas o usuario ou atacante fornece 50 bytes.
+2 - Sobrecrita de estruturas de controle
+    Em linguagens como C, a pilha (stack)  guarda, além dos buffers, variaveis locais, endereços de retorno e alinhadores
+    Ao copiar bytes alem do limite, o que está "depois" do buffer como o ponteiro de retorno da função é sobrescrito
+3 - Desvio de fluxo de execução
+    Quando a função tenta retornar, utiliza o endereço corrompido. Se o atacante colocar ali o endereço de sua playload(codigo malicioso), o programa "salta" para essa região e a executa.
+
+##### Tipos principais de overflow
+
+.Stack Overflow
+    Ocorre na pilha de execução, É o mais comum em exploits pois permite sobrecrever o retorno de funções
+.Heap Overflow
+    Ocorre na região de heap (alocação dinamica). Pode corromper metadados de blocos, viabilizando ataques como unlink ou House of Oranges
+.Integer Overflow
+    Explora somas ou multiplicações que ultrapassam o limite de um tipo inteiro. o valor "dobra" para um numero pequeno, fazendo calculos de tamanho incorretos e levando indeiretamente a um buffer overfllow
+
+##### Tecnicas de mitigação
+
+1 - Stack canaries
+    .Colocar um valor "sentinela"(cánario) entre o buffer e o endereço de retorno
+    .Ao sair da função, verifica-se se o canario foi alterado; se sim , aborta o programa
+2 -  NX/DEP (Data Execution Prevention)
+    .Marca páginas de memoria como "Não executaveis".
+    .Mesmo que o atacante injete codigo na heap ou stack, não poderá executa-lo.
+3 - ASLR (Address Space Layout Randomize)
+    .Embaralha (Randomiza) os endereços de partes criticas do processo (stack, heap, bibliotecas)
+    .Dificulta o calculo de para onde pular apos o overflow
+4 - Proteção em tempo de compliação
+    .Fortify Source, Stack Smashing Procetor (SSP) e flags do compilador (-fstack-protector, -D_FORTIFY_SOURCE=2)
+    .Inserem checagens automaticas no codigo gerado
+5 - Safe functions/ bibliotecas seguras
+.Substituir gets por fgets, strcpy por strncpy(ou melhor ainda, usar string classes em linguagens de mais alto nivel)
