@@ -346,3 +346,32 @@ O buffer overflow acontece quando um programa copia mais dados para o buffer(ár
     .Inserem checagens automaticas no codigo gerado
 5 - Safe functions/ bibliotecas seguras
 .Substituir gets por fgets, strcpy por strncpy(ou melhor ainda, usar string classes em linguagens de mais alto nivel)
+
+## Modelos de segurança
+
+### Bell-LaPadula (BLP) - Foco em confidencialidade
+
+.No Read Up (NRU): Não ler de niveis superiores
+.No Write Down(NWD): Não escrever em niveis inferiores 
+
+O objetivo central do BLP é proteger a confidencialidade dos dados, impedindo que usuários não autorizados acessem informações mais sensíveis.
+
+### Biba - Foco em integridade
+
+.No Read Down(NRD): Não ler de niveis inferiores
+.No Write Up(NWU): Não escrever em niveis superiores
+
+O modelo define níveis de integridade para sujeitos (usuários, processos) e objetos (dados, arquivos):
+Quanto maior o nível, mais confiável é o sujeito ou o dado.
+O objetivo é garantir que dados importantes não sejam modificados ou corrompidos por fontes menos confiáveis.
+
+### Clark-Wilson - Integridade Transacional
+
+1 - Transações bem definidas (Constrained Data Items)
+    So operações autorizadas podem modificar dados
+2 - Separation  of Duties (Separação de funções)
+    Um mesmo usuario não pode executar todas as funções de uma ação critica
+3 - Audit Details (Logs de consultoria)
+    Toda ação e registrada em log, permitindo rastreabilidade e detecção de fraudes.
+
+## Controle de Acesso
