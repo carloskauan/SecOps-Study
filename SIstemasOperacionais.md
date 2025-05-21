@@ -375,3 +375,59 @@ O objetivo é garantir que dados importantes não sejam modificados ou corrompid
     Toda ação e registrada em log, permitindo rastreabilidade e detecção de fraudes.
 
 ## Controle de Acesso
+
+### Discretionary Access Control (DAC)
+
+.Papel: O dono do recurso definir permissões
+.Prós: Flexivel, facil de configurar
+.Contras: Sujeito a erros humanos e "heranças" indevidas de permissões.
+.Ex:
+```c
+chmod 640 relatório.pdf
+# dono: leitura e escrita; grupo: leitura; outros: nenhum acesso
+```
+
+### Mandatory Access Control (MAC)
+
+.Papel: Permissões definidas pelo sistema baseado em politicas(Niveis de segurança)
+.Pros: Mais rigido e confiavel em ambientes criticos.
+.Contras: Menos flexil, mais complexo de manter.
+.EX: SELinux/AppArmor
+
+### Role-Based Acess Control (RBAC)
+
+.Papel: Atribuiu permissões a papeis, e papeis a usuario
+.Pros: Simplifica a gestão em larga escala; fácil de auditar.
+.Contras: Pode crescer em complexidade se os papeis forem demasiados
+
+## Autenticação 
+
+#### Senha
+.Simples, mas vulneravel aforça bruta e phishing
+.Dois fatores (2FA), combina a utilização de senha a validação por email, sms ou token.
+.Biometria. Impressão digital, Face, Iris. Mais dificil de se falsificar, mas gera preocupações de privacidade
+.Chaves criptografadas, EX: SSH com par de chaves publica/privada; sem aviso de senhas pela rede.
+
+```c
+ssh -i ~/.ssh/minha_chave.pem usuario@servidor.exemplo.com
+
+```
+## Principais Vulnerabilidades e Explorações
+
+.Buffer Overflow
+    Sobrescreve memória adjacente para desviar fluxo (já detalhado na seção anterior).
+.Escalonamento de Privilégios
+    Bugs em serviços ou SUID podem elevar um usuário comum a root.
+    ´´´c
+    find / -perm -4000 2>/dev/null  # programas SUID
+    ´´´
+.Brute-Force
+    Tentativa exaustiva de senhas.
+    ```C
+    hydra -l admin -P senhas.txt ssh://192.168.1.1
+    ```
+.Exploração de serviços
+    Serviços desatualizados com falhas conhecidas
+    ```c
+    nmap -sV --script=vuln 192.168.1.1
+    ```
