@@ -410,7 +410,6 @@ chmod 640 relatório.pdf
 
 ```c
 ssh -i ~/.ssh/minha_chave.pem usuario@servidor.exemplo.com
-
 ```
 ## Principais Vulnerabilidades e Explorações
 
